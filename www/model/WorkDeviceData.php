@@ -9,18 +9,17 @@
  */
 class WorkDeviceData extends \Phalcon\Mvc\Model
 {
-    private $d = 0;
+    private $device_id = 0;
 
-    private $n = 0;
+    private $sensor_id = 0;
 
-    public function __construct($d, $n) {
-        $this->d = $d;
-        $this->n = $n;
+    public function set($device_id, $sensor_id) {
+        $this->device_id = $device_id;
+        $this->sensor_id = $sensor_id;
     }
 
     public function getSource() {
-        return "pre_app_sensor_{$this->d}_{$this->n}";
+        return "pre_app_work_sensor_{$this->device_id}_{$this->sensor_id}";
     }
-
 
 }

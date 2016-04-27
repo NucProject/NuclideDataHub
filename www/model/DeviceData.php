@@ -12,7 +12,7 @@ class DeviceData extends \Phalcon\Mvc\Model
 
     private $n = 0;
 
-    public function __construct($d, $n) {
+    public function set($d, $n) {
         $this->d = $d;
         $this->n = $n;
     }

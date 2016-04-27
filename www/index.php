@@ -33,10 +33,10 @@ $di->set('view', function() {
 
 $di->set('db', function() {
     return new Phalcon\Db\Adapter\Pdo\Mysql(array(
-        'host' => Config::$mysqlHost,
+        'host' => HubConfig::$mysqlHost,
         'username' => 'root',
         'password' => 'root',
-        'dbname' => 'ndcdb',
+        'dbname' => 'yuanwh_radess',
         "options" => array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         )
