@@ -11,7 +11,7 @@ class PreAppWorkDevice extends \Phalcon\Mvc\Model
     public static function getDeviceId($deviceSn) {
         $device = PreAppWorkDevice::findFirst(array("device_sn='$deviceSn'"));
         if ($device) {
-            return $device->device_id;
+            return array($device->device_id, $device->sid);
         }
         return false;
     }

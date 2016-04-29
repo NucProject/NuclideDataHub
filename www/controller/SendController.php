@@ -52,9 +52,13 @@ class SendController extends BaseController
         $deviceSn = $data['Device_id'];
 
         if ($type == 'work') {
-            $deviceId = PreAppWorkDevice::getDeviceId($deviceSn);
+            $ret = PreAppWorkDevice::getDeviceId($deviceSn);
+            $deviceId = $ret[0];
+            $stationId = $ret[1];
         } else {
-            $deviceId = PreAppDevice::getDeviceId($deviceSn);
+            $ret = PreAppDevice::getDeviceId($deviceSn);
+            $deviceId = $ret[0];
+            $stationId = $ret[1];
         }
 
         $values = $data['values'];
@@ -66,11 +70,12 @@ class SendController extends BaseController
                 $sensorId = PreAppWorkSensor::getSensorId($sensorName);
                 // echo "($sensorName-$sensorId)";
                 $data = new WorkDeviceData();
-                $data->set($deviceId, $sensorId);
+                $data->set($deviceId, $sensorId, $stationId);
+                $data->setLocation($data['Lat'], $data['Lng']);
             } else {
                 $sensorId = PreAppSensor::getSensorId($sensorName);
                 $data = new DeviceData();
-                $data->set($deviceId, $sensorId);
+                $data->set($deviceId, $sensorId, $stationId);
             }
 
             $data->dateline = $time;
