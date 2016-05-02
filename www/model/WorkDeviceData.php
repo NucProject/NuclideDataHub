@@ -19,15 +19,21 @@ class WorkDeviceData extends \Phalcon\Mvc\Model
 
     private $lng = 0;
 
+    private $lat_gps = 0;
+
+    private $lng_gps = 0;
+
     public function set($device_id, $sensor_id, $stationId) {
         $this->device_id = $device_id;
         $this->sensor_id = $sensor_id;
         $this->station_id = $stationId;
     }
 
-    public function setLocation($lat, $lng) {
+    public function setLocation($lat, $lng, $lat_gps, $lng_gps) {
         $this->lat = $lat;
         $this->lng = $lng;
+        $this->lat_gps = $lat_gps;
+        $this->lng_gps = $lng_gps;
     }
 
     public function getSource() {
