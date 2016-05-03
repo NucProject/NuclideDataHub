@@ -68,13 +68,13 @@ class SendController extends BaseController
             $sensorValue = $value['value'];
 
             if ($type == 'work') {
-                $sensorId = PreAppWorkSensor::getSensorId($sensorName);
+                $sensorId = PreAppWorkSensor::getSensorId($deviceId, $sensorName);
                 // echo "($sensorName-$sensorId)";
                 $dataObj = new WorkDeviceData();
                 $dataObj->set($deviceId, $sensorId, $stationId);
                 $dataObj->setLocation($data['Lat'], $data['Lng'], $data['Lat_gps'], $data['Lng_gps']);
             } else {
-                $sensorId = PreAppSensor::getSensorId($sensorName);
+                $sensorId = PreAppSensor::getSensorId($deviceId, $sensorName);
                 $dataObj = new DeviceData();
                 $dataObj->set($deviceId, $sensorId, $stationId);
             }

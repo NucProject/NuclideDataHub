@@ -9,8 +9,8 @@
 class PreAppSensor extends \Phalcon\Mvc\Model
 {
 
-    public static function getSensorId($sensorName) {
-        $sensor = PreAppSensor::findFirst(array("sensor_name='$sensorName'"));
+    public static function getSensorId($deviceId, $sensorName) {
+        $sensor = PreAppSensor::findFirst(array("device_id=$deviceId and sensor_name='$sensorName'"));
         if ($sensor) {
             return $sensor->sensor_id;
         }
