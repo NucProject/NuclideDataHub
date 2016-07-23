@@ -26,9 +26,10 @@ class SendController extends BaseController
             return parent::result(array('error' => 1, 'msg' => 'Post required'));
         }
         $payload = json_decode($this->request->getRawBody(), true);
-        file_put_contents("d:\\post.txt", json_encode($payload) . "\n", FILE_APPEND);
+        // file_put_contents("d:\\post.txt", json_encode($payload) . "\n", FILE_APPEND);
 
-        if ($this->saveSensorData($payload, time(), $type)) {
+        $time = $payload['time'];
+        if ($this->saveSensorData($payload, $time, $type)) {
             return parent::result(array('error' => 0, 'msg' => 'Sensor data saved!'));
         } else {
             return parent::result(array('error' => 2, 'msg' => 'Sensor data save failed!'));
