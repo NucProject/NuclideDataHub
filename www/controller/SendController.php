@@ -80,7 +80,7 @@ class SendController extends BaseController
                 $dataObj->set($deviceId, $sensorId, $stationId);
             }
 
-            $dataObj->dateline = $time;
+            $dataObj->dateline = strtotime($time);
             $dataObj->data = $sensorValue;
             $result = $dataObj->save();
             if (!$result) {
